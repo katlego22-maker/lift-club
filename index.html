@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LiftClub SA - Share Rides, Save Petrol</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header Navigation -->
+    <header class="navbar">
+      <div class="logo">🇿🇦 LiftClub<span>SA</span></div>
+      <div class="tagline">Travel together. Save cost.</div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+      <!-- Tab Switcher Button Menu -->
+      <div class="tab-container">
+        <button class="tab-btn active" onclick="switchTab('seek-tab')">
+          🔍 Find a Ride
+        </button>
+        <button class="tab-btn" onclick="switchTab('offer-tab')">
+          🚗 Offer a Seat
+        </button>
+      </div>
+
+      <!-- TAB 1: SEEK A RIDE (PASSENGER VIEW) -->
+      <section id="seek-tab" class="tab-content active-content">
+        <div class="card">
+          <h3>Where are you going?</h3>
+          <form id="searchForm" onsubmit="handleSearch(event)">
+            <div class="form-group">
+              <label for="searchFrom">Leaving From</label>
+              <input
+                type="text"
+                id="searchFrom"
+                placeholder="e.g., Soweto"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="searchTo">Going To</label>
+              <input
+                type="text"
+                id="searchTo"
+                placeholder="e.g., Pretoria or Rustenburg"
+                required
+              />
+            </div>
+            <button type="submit" class="btn-primary">
+              Search Available Seats
+            </button>
+          </form>
+        </div>
+
+        <!-- Dynamic Search Results Render Box -->
+        <div id="searchResultsSection" class="results-container hidden">
+          <h4 class="results-title">Available Trips Found</h4>
+          <div id="resultsGrid">
+            <!-- JavaScript will dynamically inject cards here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: OFFER A SEAT (DRIVER VIEW) -->
+      <section id="offer-tab" class="tab-content">
+        <div class="card">
+          <h3>Turn Empty Seats into Petrol Money</h3>
+          <p class="subtitle">Fill your car and offset your travel costs.</p>
+
+          <form id="offerForm" onsubmit="handleOffer(event)">
+            <div class="form-group">
+              <label for="offerFrom">Starting Point</label>
+              <input
+                type="text"
+                id="offerFrom"
+                placeholder="e.g., Zeerust"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="offerTo">Final Destination</label>
+              <input
+                type="text"
+                id="offerTo"
+                placeholder="e.g., Rustenburg"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="offerRoute"
+                >Towns you pass through along the highway (Optional)</label
+              >
+              <input
+                type="text"
+                id="offerRoute"
+                placeholder="e.g., Swartruggens, Koster"
+              />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="offerDate">Date & Time</label>
+                <input type="datetime-local" id="offerDate" required />
+              </div>
+              <div class="form-group">
+                <label for="offerSeats">Seats Available</label>
+                <input
+                  type="number"
+                  id="offerSeats"
+                  min="1"
+                  max="7"
+                  value="3"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="offerPrice">Price per Seat (ZAR)</label>
+              <input
+                type="number"
+                id="offerPrice"
+                placeholder="R150"
+                min="0"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="driverWhatsApp">Your WhatsApp Number</label>
+              <input
+                type="tel"
+                id="driverWhatsApp"
+                placeholder="e.g., 0712345678"
+                required
+              />
+            </div>
+            <button type="submit" class="btn-success">Publish Trip</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
