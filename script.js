@@ -84,7 +84,7 @@ function handleOffer(event) {
                            "📞 My Phone: " + driverPhone + "\n\n" +
                            "Please verify and post my ride live on the directory!";
 
-    let adminUrl = "https://wa.me" + adminWhatsAppNumber + "?text=" + encodeURIComponent(verificationText);
+    let adminUrl = "https://wa.me/" + adminWhatsAppNumber + "?text=" + encodeURIComponent(verificationText);
     
     alert("🔒 Anti-Fraud Security Check:\n\nTo keep our network safe from fake rides, your details will now be forwarded to our admin via WhatsApp for quick profile verification. Your trip will go live on the site immediately after verification!");
     
