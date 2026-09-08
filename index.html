@@ -4,6 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LiftClub SA - Share Rides, Save Petrol</title>
+
+    <!-- Meta Tags for High-Converting Facebook Previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.io" />
+    <meta
+      property="og:title"
+      content="🇿🇦 LiftClubSA - Share Rides, Save Petrol Money"
+    />
+    <meta
+      property="og:description"
+      content="Petrol is expensive! List empty seats or find safe, affordable rides across South Africa in under 60 seconds. No passwords required."
+    />
+    <!-- Clean placeholder preview card box for social timelines -->
+    <meta property="og:image" content="https://unsplash.com" />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -130,16 +145,24 @@
               <input
                 type="tel"
                 id="driverWhatsApp"
-                placeholder="e.g., 0712345678"
+                placeholder="e.g., 0710102379"
                 required
               />
             </div>
+
+            <p class="verification-notice">
+              ℹ️ <strong>Verification Required:</strong> To prevent spam and
+              fake trips, clicking publish will send your trip details to our
+              admin on WhatsApp to list it live on the board.
+            </p>
+
             <button type="submit" class="btn-success">Publish Trip</button>
           </form>
         </div>
       </section>
     </main>
 
-    <script src="script.js"></script>
+    <!-- Version string added here to bust mobile browser caching layers -->
+    <script src="script.js?v=1.2"></script>
   </body>
 </html>

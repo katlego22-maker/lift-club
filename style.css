@@ -218,3 +218,9 @@ button[type="submit"] {
   margin-top: 5px;
   display: block;
 }
+.verification-notice {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
