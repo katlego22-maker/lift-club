@@ -38,7 +38,7 @@ function handleSearch(event) {
             let cleanPhone = trip.phone.replace(/[^0-9]/g, ''); 
             
             // Structured URL string using direct concatenations to ensure absolute cross-browser mobile app launching
-            let whatsappUrl = "https://wa.me" + cleanPhone + "?text=Hi, I want to book a seat for your trip from " + encodeURIComponent(trip.from) + " to " + encodeURIComponent(trip.to) + " via LiftClubSA";
+            let whatsappUrl = "https://wa.me/" + cleanPhone + "?text=Hi, I want to book a seat for your trip from " + encodeURIComponent(trip.from) + " to " + encodeURIComponent(trip.to) + " via LiftClubSA";
             
             resultsGrid.innerHTML += 
                 '<div class="trip-card">' +
