@@ -30,27 +30,28 @@ function handleSearch(event) {
     );
 
     if(matches.length === 0) {
-        resultsGrid.innerHTML = `<div class="trip-card" style="text-align:center; color:gray;">No matching trips found for this route yet.</div>`;
+        resultsGrid.innerHTML = '<div class="trip-card" style="text-align:center; color:gray;">No matching trips found for this route yet.</div>';
     } else {
         matches.forEach(trip => {
             // Clean up any stray spaces, symbols, or formatting errors from the phone number
             let cleanPhone = trip.phone.replace(/[^0-9]/g, ''); 
             
-            resultsGrid.innerHTML += `
-                <div class="trip-card">
-                    <div class="trip-header">
-                        <div class="trip-route">${trip.from} ➔ ${trip.to}</div>
-                        <div class="trip-price">R${trip.price}</div>
-                    </div>
-                    <div class="trip-details">
-                        <p>📅 <strong>Time:</strong> ${trip.time}</p>
-                        <p>💺 <strong>Seats left:</strong> ${trip.seats}</p>
-                        ${trip.via ? `<span class="via-tag">🚗 Via: ${trip.via}</span>` : ''}
-                    </div>
-                    <!-- Modern clean universal WhatsApp endpoint -->
-                    <a href="https://wa.me{cleanPhone}?text=Hi, I want to book a seat for your trip from ${trip.from} to ${trip.to} via LiftClubSA" target="_blank" class="btn-whatsapp">💬 Book Seat via WhatsApp</a>
-                </div>
-            `;
+            // Build the WhatsApp message link safely using standard string addition
+            let whatsappUrl = "https://wa.me" + cleanPhone + "?text=Hi, I want to book a seat for your trip from " + encodeURIComponent(trip.from) + " to " + encodeURIComponent(trip.to) + " via LiftClubSA";
+            
+            resultsGrid.innerHTML += 
+                '<div class="trip-card">' +
+                    '<div class="trip-header">' +
+                        '<div class="trip-route">' + trip.from + ' ➔ ' + trip.to + '</div>' +
+                        '<div class="trip-price">R' + trip.price + '</div>' +
+                    '</div>' +
+                    '<div class="trip-details">' +
+                        '<p>📅 <strong>Time:</strong> ' + trip.time + '</p>' +
+                        '<p>💺 <strong>Seats left:</strong> ' + trip.seats + '</p>' +
+                        (trip.via ? '<span class="via-tag">🚗 Via: ' + trip.via + '</span>' : '') +
+                    '</div>' +
+                    '<a href="' + whatsappUrl + '" target="_blank" class="btn-whatsapp">💬 Book Seat via WhatsApp</a>' +
+                '</div>';
         });
     }
     document.getElementById('searchResultsSection').classList.remove('hidden');
